@@ -14,3 +14,30 @@
     text-wrap: balance;
   }
 }
+
+@font-face {
+  font-family: RobotoCondensed;
+  src: url(/RobotoCondensed.ttf);
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: Open-Sans;
+  src: url(/Open-Sans.ttf);
+}
+
+.robotoCondensed {
+  font-family: RobotoCondensed;
+}
+
+.roboto{
+  font-family: Roboto;
+}
+
+.openSans {
+  font-family: Open-Sans;
+}
