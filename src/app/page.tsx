@@ -28,6 +28,8 @@ export default function Home() {
 
   const presentDay = new Date().toISOString().split('T')[0];
 
+  const [count, setCount] = useState<number>(3);
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
@@ -35,6 +37,24 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
+    afterSubmit();
+  }
+
+  const afterSubmit = () => {
+    setTimeout(() => {
+      setCount(2)
+    }, 1100)
+
+    setTimeout(() => {
+      setCount(1)
+    }, 2100)
+
+    setTimeout(() => {
+      setForm(emptyForm);
+      setCount(0)
+      setSubmitted(false);
+      setCount(3);
+    }, 3100)
   }
 
   // const included = /^(?=.*[?!@#$%^&*])(?=.*[A-Z])(?=.*[0-9]).*$/.test(form.password);
@@ -79,7 +99,10 @@ export default function Home() {
             :
             <div className="flex justify-center items-center flex-col">
               <img src="/check-fat-fill.svg" alt="green checkmark" className="aspect-square w-14" />
-              <h3 className="openSans font-bold text-center my-6 sm:mx-32 mx-16">Account Creation <br />Successful!</h3>
+              <h3 className="openSans font-bold text-center mt-6 sm:mx-32 mx-16">Account Creation <br />Successful!</h3>
+
+              <h3 className="openSans font-bold text-center mt-3 mb-6 sm:mx-32 mx-16">Redirecting in {count}</h3>
+
             </div>}
 
 
