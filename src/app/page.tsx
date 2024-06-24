@@ -43,18 +43,19 @@ export default function Home() {
   const afterSubmit = () => {
     setTimeout(() => {
       setCount(2)
-    }, 1100)
+    }, 1000)
 
     setTimeout(() => {
       setCount(1)
-    }, 2100)
+    }, 2000)
 
     setTimeout(() => {
       setForm(emptyForm);
+      setShowPassword(false);
       setCount(0)
       setSubmitted(false);
       setCount(3);
-    }, 3100)
+    }, 3000)
   }
 
   // const included = /^(?=.*[?!@#$%^&*])(?=.*[A-Z])(?=.*[0-9]).*$/.test(form.password);
