@@ -18,9 +18,11 @@ export default function Home() {
     confirmPassword: ""
   }
 
-
-
   const [form, setForm] = useState<IForm>(emptyForm);
+
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const passwordMatch = form.password === form.confirmPassword;
 
@@ -32,6 +34,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitted(true);
   }
 
   // const included = /^(?=.*[?!@#$%^&*])(?=.*[A-Z])(?=.*[0-9]).*$/.test(form.password);
@@ -44,8 +47,8 @@ export default function Home() {
         <div className="bg-white px-6 py-4 min-w-72">
           <h1 className="text-center text-[34px] text-black mb-6 robotoCondensed font-light ">USER <strong className="font-bold">SIGN UP</strong></h1>
 
-          <form onSubmit={handleSubmit} className="openSans font-semibold">
-            <div className="grid grid-cols-2 gap-6 ">
+          {!submitted ? <form onSubmit={handleSubmit} className="openSans font-semibold">
+            <div className="grid sm:grid-cols-2 gap-6 ">
               <InputComponent for={"First Name"} label={"First Name:"} required={true} onChange={handleFormChange} value={form.firstName} name="firstName" max={100} type={"text"} placeHolder={"First Name"} />
 
               <InputComponent for={"Last Name"} label={"Last Name:"} required={true} onChange={handleFormChange} value={form.lastName} name="lastName" max={100} type={"text"} placeHolder={"Last Name"} />
@@ -58,16 +61,26 @@ export default function Home() {
 
               <InputComponent for={"Phone Number"} label={"Phone Number:"} required={form.phone.trim() !== ""} onChange={handleFormChange} value={form.phone} name="phone" type={"tel"} pattern="\([0-9]{3}\)-[0-9]{3}-[0-9]{4}" placeHolder={"(123)-456-7890"} title={"Phone Number must be in this format: (123)-456-7890"} />
 
-              <InputComponent for={"Password"} label={"Password:"} required={true} onChange={handleFormChange} value={form.password} name="password" type={"password"} placeHolder={"Password"} min={15} pattern="(?=.*[?!@#$%^&*])(?=.*[A-Z])(?=.*[\d])[a-zA-Z0-9?!@#$%^&*]+" title={"Password must have 1 uppercase, 1 lowercase and 1 of these special characters ? ! @ # $ % ^ & * "} />
+              <InputComponent for={"Password"} label={"Password:"} required={true} onChange={handleFormChange} value={form.password} name="password" type={showPassword ? "text" : "password"} placeHolder={"Password"} min={15} pattern="(?=.*[?!@#$%^&*])(?=.*[A-Z])(?=.*[\d])[a-zA-Z0-9?!@#$%^&*]+" title={"Password must have 15 characters minimum, have 1 uppercase, 1 lowercase and 1 of these special characters ? ! @ # $ % ^ & * "} />
 
-              <InputComponent for={"Confirm Password"} label={"Confirm Password:"} required={true} onChange={handleFormChange} value={form.confirmPassword} name="confirmPassword" type={"password"} placeHolder={"Re-Type Your Password"} error={!passwordMatch} min={15} />
-              {!passwordMatch && <p>Passwords Dont Match</p>}
+              <InputComponent for={"Confirm Password"} label={"Confirm Password:"} required={true} onChange={handleFormChange} value={form.confirmPassword} name="confirmPassword" type={showPassword ? "text" : "password"} placeHolder={"Re-Type Your Password"} error={!passwordMatch} min={15} />
+            </div>
+
+            <div className="flex justify-center">
+
+              <img className="hover:cursor-pointer" src={ showPassword ? "/eye.svg" : "/eye-slash.svg"} alt="eyeball" onClick={() => setShowPassword(!showPassword)}/>
+
             </div>
 
             <div className="flex justify-center mt-6 w-full">
               <button type="submit" className="bg-[#DD8A3E] hover:brightness-90 p-4 w-full text-white text-sm font-bold tracking-wide">SIGN UP</button>
             </div>
           </form>
+            :
+            <div className="flex justify-center items-center flex-col">
+              <img src="/check-fat-fill.svg" alt="green checkmark" className="aspect-square w-14" />
+              <h3 className="openSans font-bold text-center my-6 sm:mx-32 mx-16">Account Creation <br />Successful!</h3>
+            </div>}
 
 
         </div>
