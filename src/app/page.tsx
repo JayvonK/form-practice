@@ -43,6 +43,8 @@ export default function Home() {
   const afterSubmit = () => {
     setTimeout(() => {
       setCount(2)
+      setForm(emptyForm);
+      setShowPassword(false);
     }, 1000)
 
     setTimeout(() => {
@@ -50,8 +52,7 @@ export default function Home() {
     }, 2000)
 
     setTimeout(() => {
-      setForm(emptyForm);
-      setShowPassword(false);
+      
       setCount(0)
       setSubmitted(false);
       setCount(3);
