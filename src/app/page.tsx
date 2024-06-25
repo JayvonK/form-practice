@@ -124,10 +124,6 @@ export default function Home() {
       afterSubmit();
     }
 
-    // if (canSubmit) {
-    //   setSubmitted(true);
-    //   afterSubmit();
-    // }
   }
 
 
