@@ -169,7 +169,7 @@ export default function Home() {
     <main className="min-h-screen w-full bg-[#23527C]">
       <div className="flex items-center flex-col">
         <img src="/WA-Logo.png" alt="William's Act Logo" />
-        <div className="bg-white px-6 py-4 min-w-72 max-w-[538px] mb-12">
+        <div className="bg-white px-6 py-4 min-w-72 sm:max-w-[538px] max-w-[288px] mb-12">
 
           <h1 className="text-center text-[34px] text-black mb-6 robotoCondensed font-light ">USER <strong className="font-bold">SIGN UP</strong></h1>
 
