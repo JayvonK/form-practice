@@ -166,7 +166,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen w-full bg-[#23527C]">
+    <main className="min-h-screen w-full bg-[#23527C] flex items-center justify-center">
       <div className="flex items-center flex-col">
         <img src="/WA-Logo.png" alt="William's Act Logo" />
         <div className="bg-white px-6 py-4 min-w-72 sm:max-w-[538px] max-w-[288px] mb-12">
