@@ -114,17 +114,18 @@ export default function Home() {
       count++;
     }
 
-    return count === 0 ? true : false;
+      return count === 0 ? true : false;
   }
 
   const handleSubmit = () => {
-    
+
     if (!(firstNameError && lastNameError && emailError && passwordError && dateError) && checkInputs()) {
       setSubmitted(true);
       afterSubmit();
     }
 
   }
+
 
 
   const afterSubmit = () => {
