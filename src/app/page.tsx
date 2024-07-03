@@ -58,7 +58,6 @@ export default function Home() {
           setPhoneNumberError(false);
         } else {
           const correct = /\([0-9]{3}\)-[0-9]{3}-[0-9]{4}/.test(e.target.value)
-
           correct ? setPhoneNumberError(false) : setPhoneNumberError(true);
         }
         break;
@@ -114,7 +113,7 @@ export default function Home() {
       count++;
     }
 
-      return count === 0 ? true : false;
+    return count === 0 ? true : false;
   }
 
   const handleSubmit = () => {
